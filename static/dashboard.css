@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.user-dashboard-container {
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.filter-container {
+    margin: 20px 0;
+}
+
+.filter-container label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.filter-container select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    width: calc(33% - 40px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.event-card h2 {
+    margin-top: 0;
+}
+
+.event-card p {
+    margin: 10px 0;
+}
+
+.event-card button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.event-card .register-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.event-card .unregister-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.event-card button:hover {
+    opacity: 0.8;
+}
+
+.participants {
+    margin-top: 20px;
+}
+
+.participants h3 {
+    margin-top: 0;
+}
+
+.participants ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.participants ul li {
+    margin: 5px 0;
+}

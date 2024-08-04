@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <div class="user-dashboard-container">
+        <header>
+            <h1>Welcome, {{ session['user'].capitalize() }}</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="filter-container">
+            <label for="club_filter">Filter by Club:</label>
+            <select id="club_filter" name="club_filter">
+                <option value="">All Clubs</option>
+                {% for club in clubs %}
+                <option value="{{ club }}">{{ club.capitalize() }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="events-container">
+            {% if events %}
+                {% for event in events %}
+                <div class="event-card" data-club="{{ event.club }}">
+                    <h2>{{ event.name }}</h2>
+                    <p><strong>Date:</strong> {{ event.date }}</p>
+                    <p><strong>Time:</strong> {{ event.time }}</p>
+                    <p><strong>Venue:</strong> {{ event.venue }}</p>
+                    <p>{{ event.details }}</p>
+                    <button class="register-btn" data-event-id="{{ event._id }}">Register</button>
+                    <button class="unregister-btn" data-event-id="{{ event._id }}">Unregister</button>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No events available.</p>
+            {% endif %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

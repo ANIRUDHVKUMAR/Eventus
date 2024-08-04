@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='club_dashboard.css') }}">
+</head>
+<body>
+    <div class="admin-dashboard-container">
+        <div class="sidebar">
+            <h2>{{ session['club_admin'].capitalize() }}</h2>
+            <ul>
+                <li><a href="#" id="add-event-link">Add Event</a></li>
+                <li><a href="#" id="modify-event-link">Modify Event</a></li>
+                <li><a href="#" id="remove-event-link">Remove Event</a></li>
+                <li><a href="#" id="past-events-link">Past Events</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Welcome, {{ session['club_admin'].capitalize() }}</h1>
+            <div id="add-event-form" class="form-container" style="display: none;">
+                <h2>Add Event</h2>
+                <form method="post" action="{{ url_for('add_event') }}">
+                    <label for="event_name">Event Name</label>
+                    <input type="text" id="event_name" name="event_name" required>
+                    
+                    <label for="event_date">Event Date</label>
+                    <input type="date" id="event_date" name="event_date" required>
+                    
+                    <label for="event_time">Event Time</label>
+                    <input type="time" id="event_time" name="event_time" required>
+                    
+                    <label for="event_venue">Event Venue</label>
+                    <input type="text" id="event_venue" name="event_venue" required>
+                    
+                    <label for="event_details">Event Details</label>
+                    <textarea id="event_details" name="event_details" required></textarea>
+                    
+                    <button type="submit">Add Event</button>
+                </form>
+            </div>
+
+            <div id="modify-event-form" class="form-container" style="display: none;">
+                <h2>Modify Event</h2>
+                <form method="post" action="{{ url_for('modify_event') }}">
+                    <label for="event_id">Select Event</label>
+                    <select id="event_id" name="event_id" required>
+                        {% for event in events %}
+                        <option value="{{ event._id }}">{{ event.name }} ({{ event.date }})</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Select Event</button>
+                </form>
+
+                {% if event %}
+                <form method="post" action="{{ url_for('update_event') }}">
+                    <input type="hidden" name="event_id" value="{{ event._id }}">
+                    <label for="event_name">Event Name</label>
+                    <input type="text" id="event_name" name="event_name" value="{{ event.name }}" required>
+                    
+                    <label for="event_date">Event Date</label>
+                    <input type="date" id="event_date" name="event_date" value="{{ event.date }}" required>
+                    
+                    <label for="event_time">Event Time</label>
+                    <input type="time" id="event_time" name="event_time" value="{{ event.time }}" required>
+                    
+                    <label for="event_venue">Event Venue</label>
+                    <input type="text" id="event_venue" name="event_venue" value="{{ event.venue }}" required>
+                    
+                    <label for="event_details">Event Details</label>
+                    <textarea id="event_details" name="event_details" required>{{ event.details }}</textarea>
+                    
+                    <button type="submit">Update Event</button>
+                </form>
+                {% endif %}
+            </div>
+
+            <div id="remove-event-form" class="form-container" style="display: none;">
+                <h2>Remove Event</h2>
+                <form method="post" action="{{ url_for('remove_event') }}">
+                    <label for="event_id">Select Event</label>
+                    <select id="event_id" name="event_id" required>
+                        {% for event in events %}
+                        <option value="{{ event._id }}">{{ event.name }} ({{ event.date }})</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Remove Event</button>
+                </form>
+            </div>
+
+            <div id="past-events-container" class="form-container" style="display: none;">
+                <h2>Past Events</h2>
+                <div class="events-list">
+                    {% if events %}
+                        {% for event in events %}
+                        <div class="event-card">
+                            <h5>{{ event.name }}</h5>
+                            <p><strong>Date:</strong> {{ event.date }}</p>
+                            <p><strong>Time:</strong> {{ event.time }}</p>
+                            <p><strong>Venue:</strong> {{ event.venue }}</p>
+                            <p>{{ event.details }}</p>
+                            <h6>Participants:</h6>
+                            <ul>
+                                {% for participant in event.participants %}
+                                <li>{{ participant.username }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No past events available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='admin_dashboard.js') }}"></script>
+</body>
+</html>
