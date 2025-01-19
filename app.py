@@ -8,7 +8,7 @@ app.secret_key = 'your_secret_key'
 # MySQL Configuration
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'your_mysql_password'
+app.config['MYSQL_PASSWORD'] = '************'
 app.config['MYSQL_DB'] = 'eventus_db'
 
 mysql = MySQL(app)
