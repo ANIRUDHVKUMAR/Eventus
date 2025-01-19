@@ -16,14 +16,6 @@ Eventus Dashboard is a web application designed for managing and viewing events 
   - **Event Unregistration**: Users can unregister from events they have previously registered for.
   - **Club Filter**: Allows users to filter events by club.
 
-## Installation
-
-### Prerequisites
-
-- Python 3.x
-- Node.js (for frontend build tools, if necessary)
-- MongoDB (for database)
-
 ### Setup
 
 1. **Clone the Repository**:
@@ -42,16 +34,8 @@ Eventus Dashboard is a web application designed for managing and viewing events 
      ```bash
      pip install -r requirements.txt
      ```
-   - **Start MongoDB**:
-     Ensure MongoDB is running on your machine. 
-
-3. **Setup Frontend** (if applicable):
-   - **Install Node.js Dependencies**:
-     ```bash
-     npm install
-     ```
-
-4. **Run the Application**:
+  
+3. **Run the Application**:
    - **Start Flask Backend**:
      ```bash
      python app.py
