@@ -97,7 +97,3 @@ Eventus Dashboard is a web application designed for managing and viewing events 
 ## Contact
 
 For any inquiries or issues, please contact [anirudhvk2002@gmail.com](mailto:anirudhvk2002@gmail.com).
-
----
-
-Feel free to modify the content as per your project's specifics and add any additional details as needed.
